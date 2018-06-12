@@ -1,0 +1,68 @@
+04/06/18
+Need to rewrite Datacard to display things in new way. 
+1) Information icon with tooltip (easy enough)
+2) Wrapped in some form of grid. Can just use CSS grid for this? Actually not sure that I like the grid look. Makes the page look a bit too cluttered.
+3) Change some of the information presented.
+
+Think that size of circle div should be related to font-size of contained element. Makes it a bit easier to resize stuff later on.
+Need to sort out alignment of 'i' icon. 
+What on Earth happened to the font size? Just seems to have stopped working.
+Get rid of any inline-CSS. Roll into .less file, cut down usage as much as possible
+
+05/06/18
+Pubdash page looks about finished. Quite happy with the LESS written for it: circle resizes nicely based on size of contained text.
+
+Going to move on and take a look at adding checkboxes to show/hide columns on good-loop dashboard. 
+-> Which columns should be enabled by default?
+-> Nice to have a show/hide all checkbox
+-> How to display so that hidden columns can still be reenabled, without the corresponding checkbox getting in the way
+-> Should set this up in such a way that a full-reload isn't triggered when a checkbox is selected/unselected
+
+Easiest to use would probably be to have checkbox above corresponding field. Issue is then what to do with the field/checkbox after it's been disabled.
+Options:
+-> Fold column like an accordion. Possible ineffective if the title heading makes up most of the field's width.
+-> Grey-out field and shove it onto the end. Simple enough, disadvantage would be that it might be difficult to reposition column back into its original spot if disabled then reenabled.
+-> Have a separate panel to hold checkboxes. Makes it a good deal more awkward to shut off a particular field -- not too keen on this.
+-> Could add disabled fields to a little panel where they can be reenabled. Checkbox in place only really necessary for disabling stuff.
+
+*Fourth option above actually seems quite nice.
+*Would be nice if it remembered your preferences; at least for any given session.
+*Could automatically exclude fields with no values. Not very likely to happen for live data -- lower priority.
+
+Rewrite of SimpleTable may be necessary to accomplish this.
+
+Values of each checkbox need to be stored somewhere in DataStore. onClick triggers action removing column + moving checkbox to new panel
+Could just have condition that suppresses column dislaying if checkbox is not selected. Will automatically result in the above behaviour
+
+TH probably does have to carry checkbox in order to have checkbox positioned in column. 
+As it is possible for one page to contain multiple tables, need some way of uniquely identifying table and accompanying checkboxes.
+Think that panel of deselected checboxes will have to be a separate component though.
+
+Can have floating list of check values held in DataStore.
+Initially generate from data headings, set each to "true"/"checked".
+Can then pass these values to TH and checkbox panel component.
+
+Found that style of React used to make SimpleTable actually doesn't use DataStore. Works out simpler if anything: don't have to worry about different tables all writing to the
+same DataStore location.
+
+Have it hiding the header ok, but also need to hide the table data. Just get left with a bunch of orphan data otherwise.
+Think solution is to introduce check against checkboxValues in Row. Don't actually want to modify base code too much.
+Solution might be to create a function to return a clone of columns with anything that should be hidden removed.
+
+This now works. Still need to hide total, maybe change output CSV to respect checkbox values.
+
+06/06/18
+Easier to prefilter columns object to not carry "hidden" columns. 
+Then creates something of an issue where it won't know whether or not to add checkbox in TH.
+Can quickly check state to see if checkboxValues is truthy; if it is, add a checkbox.
+Probably want a way to make certain field impossible to hide. Not a major priority though: would be a pretty silly thing to click on, but it won't break anything per-se. 
+
+11/06/18
+Is a bug where deleting SimpleTable columns interferes with sortBy. Issue is that sortBy assumes that columns are at a stable index within the columns array.
+Need to change this so that it can uniquely refer to a column regardless of where it is.
+With present behaviour, clicking to sort by a column and then subsequently deleting it will cause the table to be sorted by the column to its immediate right
+
+-> Need to go through and change system to refer to a column ID rather than an array index
+-> Probably need to add a condition to remove sortBy when a column is removed from the table
+
+Doesn't look like many deep changes will need to be made to make it not depend on array indices
