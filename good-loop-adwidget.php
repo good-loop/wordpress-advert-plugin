@@ -47,17 +47,20 @@ class GoodLoop_AdWidget extends WP_Widget {
     //Have link to (their?) publisher portal. Explain that they can control charities/collect their earnings from there
     //Allow them to set variant here
     public function form($instance) {
-        // echo '<div>
-        //         <p>See your <a href="/wp-admin/options-general.php?page=good-loop-adwidget.php">Good-loop settings tab</a> to adjust the adunit displayed</p>
-        //       </div>';
         $defaults = array('dataFormatOption' => '', 'dataMobileFormat' => '');
         $instance = wp_parse_args((array) $instance, $defaults);
-        //Does nothing if the options already exists
-        // $options = get_option('dataFormatOption');
         
         ?>
             <div>
-                <p>Adunit variant</p>
+                <h1>Advanced settings</h1>
+                <p> 
+                    These controls allow you to set the size and shape of the adunit. An explanation of what each of these does can be found in the 
+                    <a href='/wp-admin/options-general.php?page=good-loop-adwidget.php'>Good-loop settings page</a>. If you are unsure, or just don't mind,
+                    the "default" option will select the best variant for the space provided.
+                </p>
+            </div>
+            <div>
+                <h2>Adunit variant</h2>
                 <input type="radio" name="<?php echo $this->get_field_name('dataFormatOption');?>" value="" <?php checked($instance['dataFormatOption'], ''); ?>
                 id="<?php echo $this->get_field_id('dataFormatOption');?>">
                     <label>default</label>
@@ -84,7 +87,31 @@ class GoodLoop_AdWidget extends WP_Widget {
                 </input>
             </div>
             <div>
-                <p>Adunit mobile variant</p>
+                <h2>Adunit mobile variant</h2>
+                <input type="radio" name="<?php echo $this->get_field_name('dataMobileFormat');?>" value="" <?php checked($instance['dataMobileFormat'], ''); ?>
+                id="<?php echo $this->get_field_id('dataMobileFormat');?>">
+                    <label>default</label>
+                </input>
+
+                <input type="radio" name="<?php echo $this->get_field_name('dataMobileFormat');?>" value="medium-rectangle" <?php checked($instance['dataMobileFormat'], 'medium-rectangle'); ?>
+                id="<?php echo $this->get_field_id('dataMobileFormat');?>">
+                    <label>medium-rectangle</label>
+                </input>
+
+                <input type="radio" name="<?php echo $this->get_field_name('dataMobileFormat');?>" value="leaderboard" <?php checked($instance['dataMobileFormat'], 'leaderboard'); ?>
+                id="<?php echo $this->get_field_id('dataMobileFormat');?>">
+                    <label>leaderboard</label>
+                </input>
+
+                <input type="radio" name="<?php echo $this->get_field_name('dataMobileFormat');?>" value="sticky-footer" <?php checked($instance['dataMobileFormat'], 'sticky-footer'); ?>
+                id="<?php echo $this->get_field_id('dataMobileFormat');?>">
+                    <label>sticky-footer</label>
+                </input>
+
+                <input type="radio" name="<?php echo $this->get_field_name('dataMobileFormat');?>" value="vertical-banner" <?php checked($instance['dataMobileFormat'], 'vertical-banner'); ?>
+                id="<?php echo $this->get_field_id('dataMobileFormat');?>">
+                    <label>vertical-banner</label>
+                </input>
             </div>
         <?php
     }
@@ -113,13 +140,6 @@ function good_loop_register_admin() {
     add_options_page('Good-loop', 'Good-loop', 'edit_pages', 'good-loop-adwidget.php', array('GoodLoop_AdWidget', 'adminMenu'));
 }
 
-// function good_loop_admin_init() {
-//     register_setting('good_loop', 'dataFormatOption');
-//     register_setting('good_loop', 'dataMobileFormat');
-
-//     add_option('dataFormatOption', 'default');
-// }
-
 function debug_to_console( $data ) {
     $output = $data;
     if ( is_array( $output ) )
@@ -130,5 +150,4 @@ function debug_to_console( $data ) {
 
 add_action('widgets_init', 'good_loop_register_widgets');
 add_action('admin_menu', 'good_loop_register_admin');
-// add_action('admin_init', 'good_loop_admin_init');
 ?>

@@ -10,47 +10,21 @@
 
     <h1>Good-loop Wordpress Widget</h1>
     <p>
-        Visit your <a href='https://portal.good-loop.com/#publisher/'>publisher portal</a> to manage your settings and claim your earnings.
+        To get started with Good-loop, simply go to your <a href="/wp-admin/widgets.php">widgets menu</a> and drag a "Good-loop ad unit" into one of your sidebars. The adunit will take care of setup for you.<br/>
+        Visit your <a href='https://portal.good-loop.com/#publisher/'>publisher portal</a> for more in-depth settings or to claim your earnings.
     </p>
-</div>
-<div>
-    <p>Adunit variant</p>
-    <form action="options.php" method="post">
-        <?php
-            settings_fields('good_loop');
-            do_settings_sections('good_loop');
-        ?>
-        <input type="radio" name="dataFormat" value="">
-            <label>default</label>
-        </input>
-        <input type="radio" name="dataFormat" value="medium-rectangle">
-            <label>medium-rectangle</label>
-        </input>
-        <input type="radio" name="dataFormat" value="leaderboard">
-            <label>leaderboard</label>
-        </input>
-        <input type="radio" name="dataFormat" value="sticky-footer">
-            <label>sticky-footer</label>
-        </input>
-        <input type="radio" name="dataFormat" value="vertical-banner">
-            <label>vertical-banner</label>
-        </input>
-        <p>Adunit mobile variant</p>
-        <input type="radio" name="dataMobileFormat" value="">
-            <label>default</label>
-        </input>
-        <input type="radio" name="dataMobileFormat" value="medium-rectangle">
-            <label>medium-rectangle</label>
-        </input>
-        <input type="radio" name="dataMobileFormat" value="leaderboard">
-            <label>leaderboard</label>
-        </input>
-        <input type="radio" name="dataMobileFormat" value="sticky-footer">
-            <label>sticky-footer</label>
-        </input>
-        <input type="radio" name="dataMobileFormat" value="vertical-banner">
-            <label>vertical-banner</label>
-        </input>
-        <button type="submit">Submit changes</button>
-    </form>
+    <h1>Explanation of widget settings</h1>
+    <p>
+        If you are unhappy with the size or shape of the adwidget, you can choose from one of four presets in the <a href="/wp-admin/widgets.php">widgets menu</a>.
+        In the widget menu, you will see the following options:
+        <ul>
+            <li><b>Default:</b> allow the adunit to pick the best variant to fill the space provided</li>
+            <li><b>Medium rectangle:</b> a 300px by 250px block</li>
+            <li><b>Leaderboard:</b> a narrow (728px by 90px) banner that runs across the page</li>
+            <li><b>Sticky footer:</b> a thin (90px) banner that occupies the full width of the page. It will remain visible to the user even after scrolling</li>
+            <li><b>Vertical banner:</b> a 120px by 240px block that runs vertically down the page</li>
+        </ul>
+        You can control the variant visible to mobile and desktop/laptop users separately. If all of this feels a little bit abstract, you could always play around with the settings
+        to see which looks best on your page. Failing that, the default setting is always easiest.
+    </p>
 </div>
