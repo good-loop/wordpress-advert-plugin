@@ -87,6 +87,12 @@ class GoodLoop_AdWidget extends WP_Widget {
                             <label>vertical-banner</label>
                         </input>
                     </li>
+                    <li>
+                        <input type="radio" name="<?php echo $this->get_field_name('dataFormatOption');?>" value="billboard" <?php checked($instance['dataFormatOption'], 'billboard'); ?>
+                            id="<?php echo $this->get_field_id('dataFormatOption');?>">
+                                <label>billboard</label>
+                        </input>
+                    </li>
                 </ul>
             </div>
             <div>
@@ -120,6 +126,12 @@ class GoodLoop_AdWidget extends WP_Widget {
                         <input type="radio" name="<?php echo $this->get_field_name('dataMobileFormat');?>" value="vertical-banner" <?php checked($instance['dataMobileFormat'], 'vertical-banner'); ?>
                         id="<?php echo $this->get_field_id('dataMobileFormat');?>">
                             <label>vertical-banner</label>
+                        </input>
+                    </li>
+                    <li>
+                        <input type="radio" name="<?php echo $this->get_field_name('dataMobileFormat');?>" value="billboard" <?php checked($instance['dataMobileFormat'], 'billboard'); ?>
+                            id="<?php echo $this->get_field_id('dataMobileFormat');?>">
+                                <label>billboard</label>
                         </input>
                     </li>
                 </ul>
