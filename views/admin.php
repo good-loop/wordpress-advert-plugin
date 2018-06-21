@@ -8,9 +8,9 @@
         }
     </script>
 
-    <h1>Good-loop Wordpress Widget</h1>
+    <h1>Good-Loop Wordpress Widget</h1>
     <p>
-        To get started with Good-loop, simply go to your <a href="/wp-admin/widgets.php">widgets menu</a> and drag a "Good-loop ad unit" into one of your sidebars. The adunit will take care of setup for you.<br/>
+        To get started with Good-Loop, simply go to your <a href="/wp-admin/widgets.php">widgets menu</a> and drag a "Good-Loop ad unit" into one of your sidebars. The adunit will take care of setup for you.<br/>
         Visit your <a href='https://portal.good-loop.com/#publisher/' class="pubLink">publisher portal</a> for more in-depth settings.
     </p>
     <h1>Explanation of widget settings</h1>
