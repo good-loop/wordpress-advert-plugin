@@ -3,17 +3,17 @@ Wordpress official instructions: https://developer.wordpress.org/plugins/wordpre
 
 Username: goodloop
 Email: mark@winterwell.com
-Password: listed in master-logins.txt
 
 This document is intended as a quick-start guide for setting up an SVN repository to track Wordpress' remote plugins directory. While these instructions should be all you need to get set up, 
 the official Wordpress guide (listed at the top) is still worth reading through.
 
 Setting up a local repository:
-1) Install subversion -- sudo apt-get install subversion
-2) Create a new directory for the repository. An existing repository cannot readily be used as SVN enforces a folder structure that is not amenable to local testing
-3) svn co http://plugins.svn.wordpress.org/good-loop-ad-widget/ This will create a new folder in the current directory and mirror the contents of the remote repository
 
-Making/pushing changes:
+1. Install subversion -- sudo apt-get install subversion
+2. Create a new directory for the repository. An existing repository cannot readily be used as SVN enforces a folder structure that is not amenable to local testing
+3. svn co http://plugins.svn.wordpress.org/good-loop-ad-widget/ This will create a new folder in the current directory and mirror the contents of the remote repository
+
+Making/pushing changes:   
 Add a new file/directory: svn add ...
 Delete a file/directory: svn delete ... Note that SVN will not register that a file has been deleted if this command isn't used.
 Commit changes: svn ci -m 'Commit message'
