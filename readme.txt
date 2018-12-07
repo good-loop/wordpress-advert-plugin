@@ -2,7 +2,7 @@
 Contributors: goodloop
 Tags: charity, ads, adverts, widget, goodloop, good-loop
 Requires at least: 4.7.10
-Tested up to: 4.9.6
+Tested up to: 5.0
 Stable tag: 0.1
 Requires PHP: 5.5.9
 License: GPLv3 or later
